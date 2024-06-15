@@ -1,6 +1,6 @@
 const id = params.get("id");
 
-if (id == null || id == "") window.location.href = "./teretana.html";
+if (id == null || id === "") window.location.href = "./teretana.html";
 
 const breadcrumb = document.getElementById("breadcrumb")
 const cid = document.getElementById("id")

@@ -1,5 +1,5 @@
-const table = document.getElementById("table");
-const template = document.getElementById("Clan");
+const table = document.getElementById("table")
+const template = document.getElementById("Clan")
 const searchTitle = document.getElementById('search-title')
 
 if (searchParam != null && searchParam != '') {
@@ -17,19 +17,19 @@ function fetchClanovi(url = '') {
     .then((rsp) => rsp.json())
     .then((data) => {
       if (data.lenght == 0) {
-        alert("Clan nije pronadjen");
+        alert("Clan nije pronadjen")
         fetchClanovi()
         return
 
       }
       data.forEach((clanovi) => {
-        const copy = template.content.cloneNode(true);
-        copy.querySelector(".id").innerText = clanovi.id;
-        copy.querySelector(".name").innerText = clanovi.ime;
-        copy.querySelector(".surname").innerText = clanovi.prezime;
-        copy.querySelector(".email").innerText = clanovi.email;
-        copy.querySelector(".phone-number").innerText = clanovi.broj_telefona;
-        copy.querySelector(".address").innerText = clanovi.adresa;
+        const copy = template.content.cloneNode(true)
+        copy.querySelector(".id").innerText = clanovi.id
+        copy.querySelector(".name").innerText = clanovi.ime
+        copy.querySelector(".surname").innerText = clanovi.prezime
+        copy.querySelector(".email").innerText = clanovi.email
+        copy.querySelector(".phone-number").innerText = clanovi.broj_telefona
+        copy.querySelector(".address").innerText = clanovi.adresa
         copy.querySelector(".edit").href = `./edit.html?id=${clanovi.id}`
         copy.querySelector(".remove").addEventListener('click', () => {
           if (confirm(`Da li ste sigurni da želite da obrišete člana ${clanovi.ime} ${clanovi.prezime} ${clanovi.id}`)) {
@@ -47,9 +47,9 @@ function fetchClanovi(url = '') {
           }
         })
         copy.querySelector(".updated").innerText = formatDate(clanovi.updatedAt)
-        table.appendChild(copy);
-      });
-    });
+        table.appendChild(copy)
+      })
+    })
 
 }
 
