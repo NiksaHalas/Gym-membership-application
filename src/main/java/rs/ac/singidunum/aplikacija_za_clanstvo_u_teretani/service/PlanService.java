@@ -28,7 +28,7 @@ public class PlanService {
    public Plan savePlan(PlanModel model) {
     Plan plan = new Plan();
     plan.setNaziv(model.getNaziv());
-       plan.setCena(model.getCena());
+    plan.setCena(model.getCena());
     plan.setCreatedAt(LocalDateTime.now());
     return planRepository.save(plan);
    }

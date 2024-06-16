@@ -30,6 +30,7 @@ function fetchClanovi(url = '') {
         copy.querySelector(".email").innerText = clanovi.email
         copy.querySelector(".phone-number").innerText = clanovi.broj_telefona
         copy.querySelector(".address").innerText = clanovi.adresa
+        copy.querySelector(".plan").innerText = clanovi.plan.naziv
         copy.querySelector(".edit").href = `./edit.html?id=${clanovi.id}`
         copy.querySelector(".remove").addEventListener('click', () => {
           if (confirm(`Da li ste sigurni da želite da obrišete člana ${clanovi.ime} ${clanovi.prezime} ${clanovi.id}`)) {

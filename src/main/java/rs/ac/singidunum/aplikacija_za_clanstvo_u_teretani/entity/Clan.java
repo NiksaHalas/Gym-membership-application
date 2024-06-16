@@ -28,6 +28,10 @@ public class Clan {
     @Column(nullable = false)
     private String prezime;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name ="planovi_id", nullable = false)
+    private Plan plan;
+
     @Column(nullable = false, unique = true)
     private String email;
 

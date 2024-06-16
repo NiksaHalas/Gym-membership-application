@@ -1,6 +1,6 @@
-const id = params.get("id");
+const id = params.get("id")
 
-if (id == null || id === "") window.location.href = "./teretana.html";
+if (id == null || id === "") window.location.href = "./teretana.html"
 
 const breadcrumb = document.getElementById("breadcrumb")
 const cid = document.getElementById("id")
@@ -9,11 +9,12 @@ const surname = document.getElementById("surname")
 const email = document.getElementById("email")
 const phone = document.getElementById("phone-number")
 let address = document.getElementById("address")
+let plan = document.getElementById("plan")
 let updated = document.getElementById("updated")
 
 fetch("http://localhost:8080/api/clanovi/" + id)
   .then((rsp) => {
-    if (rsp.status == 200) return rsp.json();
+    if (rsp.status === 200) return rsp.json();
 
     alert("Clan nije pronadjen");
     window.location.href = "./teretana.html";
@@ -26,7 +27,25 @@ fetch("http://localhost:8080/api/clanovi/" + id)
     email.value = data.email;
     phone.value = data.broj_telefona;
     address.value = data.adresa;
-    updated = formatDate(data.updatedAt)
+
+    // Ucitavanje planova
+      fetch('http://localhost:8080/api/planovi')
+          .then(rsp => rsp.json())
+          .then(planData =>{
+              planData.forEach(plan=> {
+                  const option = document.createElement("option")
+                  if (plan.id === data.plan.id) {
+                      option.selected = true
+                  }
+                  option.value = plan.id
+                  option.text = plan.naziv
+                  document.getElementById("plan").appendChild(option)
+              })
+          })
+
+
+
+      updated = formatDate(data.updatedAt)
 
     document.getElementById('save').addEventListener('click', () => {
       fetch(`http://localhost:8080/api/clanovi/${data.id}`,{
@@ -40,7 +59,9 @@ fetch("http://localhost:8080/api/clanovi/" + id)
             surname: surname.value,
             email: email.value,
             brojTelefona: phone.value,
-            adresa: address.value
+            adresa: address.value,
+              planId: plan.value
+
           }
         )
       })

@@ -14,4 +14,5 @@ public class clanModel {
     private String email;
     private String brojTelefona;
     private String adresa;
+    private Integer planId;
 }
