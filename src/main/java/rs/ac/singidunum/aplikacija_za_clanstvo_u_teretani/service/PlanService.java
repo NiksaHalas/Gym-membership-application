@@ -28,7 +28,7 @@ public class PlanService {
    public Plan savePlan(PlanModel model) {
     Plan plan = new Plan();
     plan.setNaziv(model.getNaziv());
-    plan.setCena(String.valueOf(model.getCena()));
+       plan.setCena(model.getCena());
     plan.setCreatedAt(LocalDateTime.now());
     return planRepository.save(plan);
    }
@@ -36,7 +36,7 @@ public class PlanService {
     public Plan updatePlan(Integer id, PlanModel model) {
         Plan plan = planRepository.findByIdAndDeletedAtIsNull(id).orElseThrow();
         plan.setNaziv(model.getNaziv());
-        plan.setCena(String.valueOf(model.getCena()));
+        plan.setCena(model.getCena());
         plan.setUpdatedAt(LocalDateTime.now());
         return planRepository.save(plan);
     }

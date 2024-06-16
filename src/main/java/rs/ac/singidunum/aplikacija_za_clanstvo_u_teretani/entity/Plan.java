@@ -23,7 +23,7 @@ public class Plan {
     private String naziv;
 
 
-    private String cena;
+    private int cena;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;

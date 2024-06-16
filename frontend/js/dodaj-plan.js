@@ -22,7 +22,7 @@ document.getElementById("save").addEventListener("click", function (event) {
         },
         body: JSON.stringify(
             {
-                name: naziv.value,
+                naziv: naziv.value,
                 cena: cena.value,
             }
         )
