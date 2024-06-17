@@ -36,7 +36,7 @@
                         </li>
                     </ul>
                     <div class="d-flex">
-                        <input class="form-control me-2" type="search" id="search" placeholder="Ime člana" >
+                        <label for="search"></label><input class="form-control me-2" type="search" id="search" placeholder="Ime člana" >
                         <button class="btn btn-outline-success" type="button" id="search-btn">
                             <i class="fa-solid fa-magnifying-glass"></i> Pretraži
                         </button>
@@ -46,9 +46,11 @@
         </nav>
         <h1 class="h3">
             <span id="search-title">Lista članova</span>
-            <a href="add.html" class="btn btn-sm btn-success">
-                <i class="fa-solid fa-plus">Dodaj člana</i>
-            </a>
+
+           <a href="add.html"> <button  class="btn btn-sm btn-success">
+                <i class="fa-solid fa-plus"></i> Dodaj člana
+           </button>
+           </a>
         </h1>
         <table class="table">
             <thead>
@@ -56,10 +58,9 @@
                     <th scope="col">#</th>
                     <th scope="col">Ime</th>
                     <th scope="col">Prezime</th>
-                    <th scope="col">Email</th>
                     <th scope="col">Broj telefona</th>
-                    <th scope="col">Adresa</th>
                     <th scope="col">Plan</th>
+                    <th scope="col">Datum isteka</th>
                     <th scope="col">Datum izmene</th>
                 </tr>
             </thead>
@@ -72,10 +73,9 @@
             <th scope="row" class="id"></th>
             <td class="name"></td>
             <td class="surname"></td>
-            <td class="email"></td>
             <td class="phone-number"></td>
-            <td class="address"></td>
             <td class="plan"></td>
+            <td class="expired"></td>
             <td class="updated"></td>
             <td>
                 <div class="btn-group">

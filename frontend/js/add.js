@@ -19,9 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const name = document.getElementById("name")
     const surname = document.getElementById("surname")
-    const email = document.getElementById("email")
     const phone = document.getElementById('phone-number')
-    const address = document.getElementById('address')
     let plan = document.getElementById("plan")
 
 
@@ -33,16 +31,10 @@ document.addEventListener("DOMContentLoaded", function() {
       alert('Prezime člana ne sme biti prazno')
     }
 
-    if (email.value === '' || email.value == null) {
-      alert('Email člana ne sme biti prazan')
-    }
     if (phone.value === '' || phone.value == null) {
       alert('Broj telefona člana ne sme biti prazan')
     }
-    if (address.value === '' || address.value == null) {
-      alert('Adresa člana ne sme biti prazana')
-    }
-    console.log('Spremam podatke za dodavanje:', {name, surname, email, phone, address, plan})
+    console.log('Spremam podatke za dodavanje:', {name, surname, phone, plan})
 
     fetch('http://localhost:8080/api/clanovi', {
       method: 'POST',
@@ -53,9 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
           {
             name: name.value,
             surname: surname.value,
-            email: email.value,
             brojTelefona:  phone.value,
-            adresa: address.value,
             planId: plan.value
 
           }

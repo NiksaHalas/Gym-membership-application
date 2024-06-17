@@ -34,6 +34,8 @@ public class ClanoviController {
         return (clanService.getClanByName(ime));
     }
 
+
+
     @PostMapping
     public Clan createClan(@RequestBody clanModel clan){
         return clanService.createClan(clan);
@@ -47,5 +49,6 @@ public class ClanoviController {
     public void deletedClan(@PathVariable Integer id) {
         clanService.deletedClan(id);
     }
+
 
 }

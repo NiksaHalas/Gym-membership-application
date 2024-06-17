@@ -32,15 +32,12 @@ public class Clan {
     @JoinColumn(name ="planovi_id", nullable = false)
     private Plan plan;
 
-    @Column(nullable = false, unique = true)
-    private String email;
 
     @Column(name = "broj_telefona", nullable = false)
     private String broj_telefona;
 
-
-    @Column(nullable = false)
-    private String adresa;
+    @Column(name = "end_date", nullable = false)
+    private LocalDate endDate;
 
 
     private LocalDateTime updatedAt;

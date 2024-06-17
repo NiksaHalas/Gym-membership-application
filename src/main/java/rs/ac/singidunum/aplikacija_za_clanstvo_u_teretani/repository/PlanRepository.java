@@ -14,6 +14,6 @@ public interface PlanRepository extends JpaRepository<Plan, Integer> {
 
     Optional<Plan> findByIdAndDeletedAtIsNull(Integer id);
 
-
+    Optional<Plan> findByNaziv(String naziv);
 
 }

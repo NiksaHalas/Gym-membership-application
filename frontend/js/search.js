@@ -1,6 +1,6 @@
 const searchInput = document.getElementById('search')
-const params = new URLSearchParams(window.location.search)
-const searchParam = params.get('search')
+const Sparams = new URLSearchParams(window.location.search)
+const searchParam = Sparams.get('search')
 
 if (searchParam != null && searchParam !== '')
     searchInput.value = searchParam

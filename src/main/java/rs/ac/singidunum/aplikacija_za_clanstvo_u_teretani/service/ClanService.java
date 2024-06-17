@@ -8,7 +8,10 @@ import rs.ac.singidunum.aplikacija_za_clanstvo_u_teretani.entity.Plan;
 import rs.ac.singidunum.aplikacija_za_clanstvo_u_teretani.model.clanModel;
 import rs.ac.singidunum.aplikacija_za_clanstvo_u_teretani.repository.ClanoviRepository;
 
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +21,7 @@ public class ClanService {
 
     private final ClanoviRepository repository;
     private final PlanService planService;
+    private final ClanoviRepository clanoviRepository;
 
     public List<Clan> getAllClanovi() {
         return repository.findAllByDeletedAtIsNull();
@@ -37,9 +41,11 @@ public class ClanService {
         clan.setBroj_telefona(model.getBrojTelefona());
         clan.setIme(model.getName());
         clan.setPrezime(model.getSurname());
-        clan.setEmail(model.getEmail());
-        clan.setAdresa(model.getAdresa());
         clan.setPlan(plan);
+
+        LocalDateTime endDate = LocalDateTime.now().plusDays(plan.getTrajanje());
+        clan.setEndDate(LocalDate.from(endDate));
+
         return  repository.save(clan);
     }
 
@@ -48,14 +54,16 @@ public class ClanService {
         Plan plan = planService.getPlanById(model.getPlanId()).orElseThrow();
         clan.setIme(model.getName());
         clan.setPrezime(model.getSurname());
-        clan.setEmail(model.getEmail());
         clan.setBroj_telefona(model.getBrojTelefona());
-        clan.setAdresa(model.getAdresa());
         clan.setPlan(plan);
     clan.setUpdatedAt(LocalDateTime.now());
+
+        LocalDateTime endDate = LocalDateTime.now().plusDays(plan.getTrajanje());
+        clan.setEndDate(LocalDate.from(endDate));
+
     return repository.save(clan);
     }
-    
+
     public void deletedClan(Integer id) {
 
     Clan clan = repository.findByIdAndDeletedAtIsNull(id).orElseThrow();
@@ -63,4 +71,18 @@ public class ClanService {
     repository.save(clan);
 
     }
+
+
+    public Clan createOrUpdateClan(Clan clan) {
+        Plan plan = clan.getPlan();
+        if (plan != null) {
+            // Calculate end date based on plan duration
+            LocalDate startDate = LocalDate.now();
+            LocalDate endDate = startDate.plusDays(plan.getTrajanje());
+            clan.setEndDate(endDate); // Assuming endDate is a field in Clan
+        }
+        return repository.save(clan);
+    }
+
+
 }

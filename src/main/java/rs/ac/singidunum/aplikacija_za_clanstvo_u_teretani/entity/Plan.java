@@ -25,6 +25,9 @@ public class Plan {
 
     private int cena;
 
+    @Column(name = "trajanje", nullable = false)
+    private int trajanje;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
@@ -32,4 +35,6 @@ public class Plan {
 
     @JsonIgnore
     private  LocalDateTime deletedAt;
+
+
 }

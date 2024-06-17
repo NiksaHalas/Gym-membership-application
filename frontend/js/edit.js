@@ -1,3 +1,4 @@
+const params = new URLSearchParams(window.location.search);
 const id = params.get("id")
 
 if (id == null || id === "") window.location.href = "./teretana.html"
@@ -6,27 +7,23 @@ const breadcrumb = document.getElementById("breadcrumb")
 const cid = document.getElementById("id")
 const name = document.getElementById("name")
 const surname = document.getElementById("surname")
-const email = document.getElementById("email")
 const phone = document.getElementById("phone-number")
-let address = document.getElementById("address")
 let plan = document.getElementById("plan")
 let updated = document.getElementById("updated")
 
 fetch("http://localhost:8080/api/clanovi/" + id)
   .then((rsp) => {
-    if (rsp.status === 200) return rsp.json();
+    if (rsp.status === 200) return rsp.json()
 
-    alert("Clan nije pronadjen");
-    window.location.href = "./teretana.html";
+    alert("Clan nije pronadjen")
+    window.location.href = "./teretana.html"
   })
   .then((data) => {
-    breadcrumb.innerText = ` ${data.ime} ${data.prezime} `;
-    cid.value = data.id;
-    name.value = data.ime;
-    surname.value = data.prezime;
-    email.value = data.email;
-    phone.value = data.broj_telefona;
-    address.value = data.adresa;
+    breadcrumb.innerText = ` ${data.ime} ${data.prezime} `
+    cid.value = data.id
+    name.value = data.ime
+    surname.value = data.prezime
+    phone.value = data.broj_telefona
 
     // Ucitavanje planova
       fetch('http://localhost:8080/api/planovi')
@@ -57,9 +54,7 @@ fetch("http://localhost:8080/api/clanovi/" + id)
           {
             name: name.value,
             surname: surname.value,
-            email: email.value,
             brojTelefona: phone.value,
-            adresa: address.value,
               planId: plan.value
 
           }

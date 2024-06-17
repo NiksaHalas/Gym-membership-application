@@ -17,6 +17,7 @@ public class PlanService {
 
    private final PlanRepository planRepository;
 
+
    public List<Plan> getAllPlan() {
        return planRepository.findAllByDeletedAtIsNull();
    }
@@ -46,5 +47,6 @@ public class PlanService {
         plan.setDeletedAt(LocalDateTime.now());
         planRepository.save(plan);
     }
+
 
 }
