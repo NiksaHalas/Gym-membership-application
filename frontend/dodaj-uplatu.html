@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teretana App</title>
+    <title>Teretana App - Dodaj Uplatu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -37,7 +37,7 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <input class="form-control me-2" type="search" id="search" placeholder="Ime člana" >
+                    <input class="form-control me-2" type="search" id="search" placeholder="Ime člana">
                     <button class="btn btn-outline-success" type="button" id="search-btn">
                         <i class="fa-solid fa-magnifying-glass"></i> Pretraži
                     </button>
@@ -48,34 +48,38 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active"><a href="./teretana.html">Početna</a></li>
+            <li class="breadcrumb-item active"><a href="./uplate.html">Uplate</a></li>
             <li class="breadcrumb-item active" aria-current="page">
-                Dodaj plan
+                Dodaj uplatu
             </li>
         </ol>
     </nav>
 
-    <h1 class="h3">Dodaj plan</h1>
+    <h1 class="h3">Dodaj uplatu</h1>
     <div>
-
         <div class="mb-3">
-            <label for="name" class="form-label">Naziv</label>
-            <input type="text" class="form-control" id="name">
+            <label for="clan" class="form-label">Član</label>
+            <select class="form-select" id="clan">
+            </select>
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Cena</label>
-            <input type="text" class="form-control" id="price">
+            <label for="amount" class="form-label">Iznos</label>
+            <input type="number" class="form-control" id="amount">
+        </div>
+        <div class="mb-3">
+            <label for="payment-date" class="form-label">Datum uplate</label>
+            <input type="date" class="form-control" id="payment-date">
         </div>
         <button type="submit" class="btn btn-success" id="save">
             <i class="fa-solid fa-floppy-disk"></i> Sačuvaj
         </button>
-
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 <script src="./js/search.js"></script>
-<script src="./js/dodaj-plan.js"></script>
+<script src="./js/dodaj-uplatu.js"></script>
 </body>
 
 </html>

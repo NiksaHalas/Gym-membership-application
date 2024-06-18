@@ -4,14 +4,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @Getter
 @Setter
-public class clanModel {
+public class UplataModel {
 
     private Integer id;
-    private String name;
-    private String surname;
-    private String brojTelefona;
-    private Integer planId;
+    private clanModel clan;
+    private Double iznos;
+    private LocalDateTime datumUplate;
 }
