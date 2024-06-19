@@ -99,25 +99,7 @@ INSERT INTO `planovi` (`planovi_id`, `naziv`, `cena`, `trajanje`, `created_at`, 
 	(8, '8 meseci', 9500.00, 240, '2024-06-16 21:07:37', NULL, NULL),
 	(9, '9 godina', 100000.00, 3240, '2024-06-17 15:18:00', '2024-06-17 15:21:10', NULL);
 
--- Dumping structure for table teretana_db.poseta
-DROP TABLE IF EXISTS `poseta`;
-CREATE TABLE IF NOT EXISTS `poseta` (
-  `poseta_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `vreme_posete` timestamp NOT NULL DEFAULT current_timestamp(),
-  `clan_id` int(11) unsigned NOT NULL,
-  `kljucic` int(100) DEFAULT NULL,
-  `planovi_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`poseta_id`),
-  KEY `fk_poseta_clanovi_clan_id` (`clan_id`),
-  KEY `fk_poseta_planovi_planovi_id` (`planovi_id`),
-  CONSTRAINT `fk_poseta_clanovi_clan_id` FOREIGN KEY (`clan_id`) REFERENCES `clanovi` (`clan_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_poseta_planovi_planovi_id` FOREIGN KEY (`planovi_id`) REFERENCES `planovi` (`planovi_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table teretana_db.poseta: ~2 rows (approximately)
-INSERT INTO `poseta` (`poseta_id`, `vreme_posete`, `clan_id`, `kljucic`, `planovi_id`) VALUES
-	(1, '2024-06-17 08:53:07', 1, 1, 0),
-	(2, '2024-06-17 08:53:22', 2, 2, 0);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
