@@ -1,8 +1,6 @@
 package rs.ac.singidunum.aplikacija_za_clanstvo_u_teretani.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +18,7 @@ import java.util.List;
 public class UplataController {
 
     private final UplataService uplataService;
-    private static final Logger logger = LoggerFactory.getLogger(UplataService.class);
+
 
     @GetMapping
     public List<Uplata> getAllUplate() {

@@ -16,7 +16,7 @@ function fetchClanovi(url = '') {
   fetch(`http://localhost:8080/api/clanovi${url}`)
     .then((rsp) => rsp.json())
     .then((data) => {
-      console.log(data);
+      console.log(data)
       if (data.length === 0) {
         alert("Clan nije pronadjen")
         fetchClanovi()
@@ -50,7 +50,7 @@ function fetchClanovi(url = '') {
         copy.querySelector(".updated").innerText = formatDate(clanovi.updatedAt)
           // Provera da li je članarina istekla
           if (isMembershipExpired(clanovi.endDate)) {
-              copy.querySelector(".expired").style.color = 'red';
+              copy.querySelector(".expired").style.color = 'red'
           }
         table.appendChild(copy)
       })
@@ -64,8 +64,8 @@ function formatDate(iso) {
 
 }
 function isMembershipExpired(endDateISO) {
-    if (!endDateISO) return false;
-    const endDate = new Date(endDateISO);
-    const today = new Date();
-    return today > endDate;
+    if (!endDateISO) return false
+    const endDate = new Date(endDateISO)
+    const today = new Date()
+    return today > endDate
 }

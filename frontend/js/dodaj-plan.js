@@ -28,7 +28,7 @@ document.getElementById("save").addEventListener("click", function (event) {
         )
     }).then(rsp => {
         if (rsp.ok) {
-            console.log('Plan uspešno dodat.');
+            console.log('Plan uspešno dodat.')
             window.location.href = `./plan.html`
             return
         }

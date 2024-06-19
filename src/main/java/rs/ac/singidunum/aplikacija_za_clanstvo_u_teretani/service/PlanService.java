@@ -1,7 +1,6 @@
 package rs.ac.singidunum.aplikacija_za_clanstvo_u_teretani.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import rs.ac.singidunum.aplikacija_za_clanstvo_u_teretani.entity.Plan;
 import rs.ac.singidunum.aplikacija_za_clanstvo_u_teretani.model.PlanModel;

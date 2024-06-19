@@ -11,7 +11,6 @@ import rs.ac.singidunum.aplikacija_za_clanstvo_u_teretani.repository.ClanoviRepo
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
