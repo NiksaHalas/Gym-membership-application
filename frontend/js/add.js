@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-  // Ucitavanje planova
+
   fetch('http://localhost:8080/api/planovi')
       .then(rsp => rsp.json())
       .then(planData => {
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
       )
     }).then(rsp => {
       if (rsp.ok) {
-        console.log('Član uspešno dodat.');
+        console.log('Član uspešno dodat.')
         window.location.href = `./teretana.html`
         return
       }

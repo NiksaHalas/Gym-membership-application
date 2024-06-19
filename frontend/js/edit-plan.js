@@ -1,4 +1,4 @@
-const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search)
 const id = params.get("id")
 
 if (id === null || id === "") window.location.href = "./teretana.html"
@@ -47,4 +47,4 @@ fetch("http://localhost:8080/api/planovi/" + id)
                     alert(`Izmena plana nije uspela (HTTP${rsp.status})`)
                 })
         })
-    });
+    })

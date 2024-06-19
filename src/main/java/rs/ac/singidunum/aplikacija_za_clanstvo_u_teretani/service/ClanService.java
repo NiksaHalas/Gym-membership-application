@@ -73,13 +73,12 @@ public class ClanService {
     }
 
 
-    public Clan createOrUpdateClan(Clan clan) {
+    public Clan IzracunajEndDate(Clan clan) {
         Plan plan = clan.getPlan();
         if (plan != null) {
-            // Calculate end date based on plan duration
             LocalDate startDate = LocalDate.now();
             LocalDate endDate = startDate.plusDays(plan.getTrajanje());
-            clan.setEndDate(endDate); // Assuming endDate is a field in Clan
+            clan.setEndDate(endDate);
         }
         return repository.save(clan);
     }

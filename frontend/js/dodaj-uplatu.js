@@ -1,59 +1,68 @@
 document.addEventListener("DOMContentLoaded", function() {
-
     // Učitavanje članova
     fetch('http://localhost:8080/api/clanovi')
         .then(rsp => rsp.json())
         .then(clanData => {
+            const clanSelect = document.getElementById("clan")
             clanData.forEach(clan => {
                 const option = document.createElement("option")
                 option.value = clan.id
                 option.text = `${clan.ime} ${clan.prezime}`
-                document.getElementById("clan").appendChild(option)
+                clanSelect.appendChild(option)
             })
         })
 
     document.getElementById("save").addEventListener("click", function(event) {
         event.preventDefault()
 
-        const clan = document.getElementById("clan")
-        const amount = document.getElementById("amount")
-        const paymentDate = document.getElementById("payment-date")
+        const clanSelect = document.getElementById("clan")
+        const clanId = parseInt(clanSelect.value)
+        const amount = parseFloat(document.getElementById("amount").value)
+        const paymentDate = document.getElementById("payment-date").value
 
-        if (clan.value === '' || clan.value == null) {
+        if (!clanId) {
             alert('Član mora biti odabran')
             return
         }
 
-        if (amount.value === '' || amount.value == null || amount.value <= 0) {
+        if (!amount || amount <= 0) {
             alert('Iznos uplate mora biti veći od nule')
             return
         }
 
-        if (paymentDate.value === '' || paymentDate.value == null) {
+        if (!paymentDate) {
             alert('Datum uplate ne sme biti prazan')
             return
         }
 
-        console.log('Spremam podatke za dodavanje uplate:', {clan, amount, paymentDate})
+        const newUplata = {
+            clanId: clanId,
+            iznos: amount,
+            datumUplate: paymentDate
+        }
+
+        console.log('Spremam podatke za dodavanje uplate:', newUplata)
 
         fetch('http://localhost:8080/api/uplate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                clanId: clan.value,
-                iznos: amount.value,
-                datumUplate: paymentDate.value
-            })
-        }).then(rsp => {
-            if (rsp.ok) {
-                console.log('Uplata uspešno dodata.');
-                window.location.href = `./uplate.html`
-                return
-            }
-
-            alert(`Dodavanje uplate nije uspelo (HTTP${rsp.status})`)
+            body: JSON.stringify(newUplata)
         })
+            .then(rsp => {
+                if (rsp.ok) {
+                    console.log('Uplata uspešno dodata.')
+                    window.location.href = `./uplate.html`
+                } else {
+                    rsp.json().then(error => {
+                        alert(`Dodavanje uplate nije uspelo (HTTP ${rsp.status}): ${error.message}`)
+                    })
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error)
+                alert(`Došlo je do greške: ${error.message}`)
+            })
     })
 })

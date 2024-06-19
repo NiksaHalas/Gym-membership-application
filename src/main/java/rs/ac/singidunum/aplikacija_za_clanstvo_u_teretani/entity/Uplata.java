@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 @Entity(name = "placanja")
 @NoArgsConstructor
@@ -26,7 +27,7 @@ public class Uplata {
     private Double iznos;
 
     @Column(name = "datum_uplate", nullable = false)
-    private LocalDateTime datumUplate;
+    private LocalDate datumUplate;
 
 
 }

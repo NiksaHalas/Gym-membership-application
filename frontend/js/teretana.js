@@ -48,6 +48,10 @@ function fetchClanovi(url = '') {
           }
         })
         copy.querySelector(".updated").innerText = formatDate(clanovi.updatedAt)
+          // Provera da li je članarina istekla
+          if (isMembershipExpired(clanovi.endDate)) {
+              copy.querySelector(".expired").style.color = 'red';
+          }
         table.appendChild(copy)
       })
     })
@@ -58,4 +62,10 @@ function formatDate(iso) {
   if (iso == null) return 'N/A'
   return new Date(iso).toLocaleString('sr-RS')
 
+}
+function isMembershipExpired(endDateISO) {
+    if (!endDateISO) return false;
+    const endDate = new Date(endDateISO);
+    const today = new Date();
+    return today > endDate;
 }

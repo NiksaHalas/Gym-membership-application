@@ -3,7 +3,9 @@ package rs.ac.singidunum.aplikacija_za_clanstvo_u_teretani.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import rs.ac.singidunum.aplikacija_za_clanstvo_u_teretani.entity.Clan;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -11,8 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 public class UplataModel {
 
-    private Integer id;
-    private clanModel clan;
+    private Integer ClanId;
     private Double iznos;
-    private LocalDateTime datumUplate;
+    private LocalDate datumUplate;
 }
