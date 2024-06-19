@@ -38,21 +38,21 @@ CREATE TABLE IF NOT EXISTS `clanovi` (
 
 -- Dumping data for table teretana_db.clanovi: ~15 rows (approximately)
 INSERT INTO `clanovi` (`clan_id`, `ime`, `prezime`, `broj_telefona`, `planovi_id`, `updated_at`, `deleted_at`, `end_date`) VALUES
-	(1, 'SvIlija', 'Nikolic', '0645567564', 1, NULL, '2024-06-11 10:31:23', NULL),
-	(2, 'Niksa', 'Krivokapic', '0645567564', 5, '2024-06-17 21:36:13', NULL, '2024-06-18'),
-	(3, 'kjbkj', 'hobjl', '463566', 1, NULL, '2024-06-11 12:41:07', NULL),
-	(4, 'Sfghhdfghfgha', 'Nikolic', '0645567564', 1, NULL, NULL, '2024-09-15'),
-	(5, 'SvIlija', 'Nikolic', '0645567564', 1, '2024-06-17 17:55:57', NULL, '2024-09-15'),
-	(6, 'Tijana', 'Pesic', '252525', 1, '2024-06-11 10:20:27', '2024-06-11 10:32:03', NULL),
-	(7, 'Tica', 'Ticicw', '064989453', 1, '2024-06-11 10:32:39', NULL, '2024-09-15'),
-	(8, 'Milan ', 'Milanovic', '0649054255', 3, '2024-06-16 21:19:46', NULL, '2024-06-29'),
-	(9, '', '', '', 1, NULL, '2024-06-16 18:52:55', NULL),
-	(10, 'fasfasf', 'asfasf', '312312', 5, NULL, '2024-06-16 21:18:51', NULL),
-	(11, 'QQQ', 'QQQ', '123123', 1, NULL, '2024-06-17 17:55:34', NULL),
-	(12, 'Niksici', 'ASfasfasf', '2131212312', 1, NULL, NULL, '2024-09-15'),
-	(13, 'Djordje', 'Zivkovic', '123123123123123', 1, NULL, '2024-06-17 18:43:54', '2024-07-17'),
-	(14, 'Niksa', 'Minic', '1031646', 1, '2024-06-17 18:43:51', NULL, '2024-09-15'),
-	(15, 'Zoran', 'Mihajlovic', '0649054255', 9, NULL, '2024-06-17 21:36:18', '2033-05-01');
+	(1, 'Nikola', 'Nikolic', '0645567564', 3, '2024-06-19 23:30:30', NULL, '2024-09-17'),
+	(2, 'Niksa', 'Halas', '0645567564', 5, '2024-06-19 23:30:33', NULL, '2024-07-05'),
+	(3, 'Mihajlo', 'Mikic', '0645956376', 9, '2024-06-19 23:30:36', NULL, '2023-06-20'),
+	(4, 'Boris', 'Stankov', '0645567564', 1, '2024-06-19 23:30:40', NULL, '2025-06-14'),
+	(5, 'Milos', 'Maksimovic', '0645567564', 1, '2024-06-19 23:30:48', NULL, '2025-06-14'),
+	(6, 'Tijana', 'Pesic', '0648756399', 8, '2024-06-19 23:31:45', NULL, '2023-06-25'),
+	(7, 'Marija', 'Marijic', '0649894536', 5, '2024-06-19 23:31:35', NULL, '2024-07-05'),
+	(8, 'Kosta', 'Zvezdanovic', '0649054255', 3, '2024-06-19 23:32:01', NULL, '2024-09-17'),
+	(9, 'Aleksa', 'Zvonimir', '0625583645', 1, '2024-06-19 23:31:03', NULL, '2025-06-14'),
+	(10, 'Dragan', 'Milic', '0645523336', 5, '2024-06-19 23:31:05', NULL, '2023-07-05'),
+	(11, 'Zoran', 'Jevtic', '0636261354', 2, '2024-06-19 23:31:30', NULL, '2024-12-16'),
+	(12, 'Nemanja', 'Milosavljevic', '2131212312', 1, '2024-06-19 23:31:10', NULL, '2025-06-14'),
+	(13, 'Djordje', 'Zivkovic', '0636645321', 1, '2024-06-19 23:31:15', NULL, '2025-06-14'),
+	(14, 'Andrija', 'Minic', '0612238569', 8, '2024-06-19 23:31:21', NULL, '2024-06-25'),
+	(15, 'Marko', 'Mihajlovic', '0649054255', 3, '2024-06-19 23:31:24', NULL, '2023-09-17');
 
 -- Dumping structure for table teretana_db.placanja
 DROP TABLE IF EXISTS `placanja`;
@@ -66,12 +66,13 @@ CREATE TABLE IF NOT EXISTS `placanja` (
   CONSTRAINT `fk_placanja_clanovi_clan_id` FOREIGN KEY (`clan_id`) REFERENCES `clanovi` (`clan_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table teretana_db.placanja: ~4 rows (approximately)
+-- Dumping data for table teretana_db.placanja: ~5 rows (approximately)
 INSERT INTO `placanja` (`placanja_id`, `clan_id`, `iznos`, `datum_uplate`) VALUES
 	(1, 1, 6500.00, '2024-06-19'),
 	(2, 2, 10000.00, '2024-06-20'),
 	(3, 3, 5500.00, '2024-06-19'),
-	(4, 4, 5695.00, '2024-06-20');
+	(4, 4, 5695.00, '2024-06-20'),
+	(5, 10, 3200.00, '2024-06-19');
 
 -- Dumping structure for table teretana_db.planovi
 DROP TABLE IF EXISTS `planovi`;
@@ -89,17 +90,15 @@ CREATE TABLE IF NOT EXISTS `planovi` (
 
 -- Dumping data for table teretana_db.planovi: ~9 rows (approximately)
 INSERT INTO `planovi` (`planovi_id`, `naziv`, `cena`, `trajanje`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, '3 meseca', 6400.00, 90, '2024-06-11 16:54:04', NULL, NULL),
-	(2, 'mesec dana', 3200.00, 30, '2024-06-11 16:54:04', NULL, NULL),
-	(3, '12 termina', 2500.00, 12, '2024-06-11 16:54:04', NULL, NULL),
-	(4, '8 termina', 2200.00, 8, '2024-06-11 16:54:04', NULL, NULL),
-	(5, '1 termin', 1000.00, 1, '2024-06-11 16:54:04', NULL, NULL),
-	(6, 'Milan ', 950.00, 0, '2024-06-16 08:23:00', NULL, '2024-06-16 18:15:24'),
-	(7, 'godinu dana', 25000.00, 360, '2024-06-16 17:43:54', '2024-06-16 18:29:28', '2024-06-16 18:29:37'),
-	(8, '8 meseci', 9500.00, 240, '2024-06-16 21:07:37', NULL, NULL),
-	(9, '9 godina', 100000.00, 3240, '2024-06-17 15:18:00', '2024-06-17 15:21:10', NULL);
-
-
+	(1, 'godinu dana', 38400.00, 360, '2024-06-11 16:54:04', NULL, NULL),
+	(2, '6 meseci', 19200.00, 180, '2024-06-11 16:54:04', NULL, NULL),
+	(3, '3 meseca', 9600.00, 90, '2024-06-11 16:54:04', NULL, NULL),
+	(4, 'mesec dana', 3200.00, 30, '2024-06-11 16:54:04', NULL, NULL),
+	(5, '16 termina', 2800.00, 16, '2024-06-11 16:54:04', NULL, NULL),
+	(6, '12 termina', 2600.00, 12, '2024-06-16 08:23:00', NULL, '2024-06-16 18:15:24'),
+	(7, '8 termina', 2400.00, 8, '2024-06-16 17:43:54', '2024-06-16 18:29:28', '2024-06-16 18:29:37'),
+	(8, '6 termina', 2200.00, 6, '2024-06-16 21:07:37', NULL, NULL),
+	(9, '1 termin', 500.00, 1, '2024-06-17 15:18:00', '2024-06-17 15:21:10', NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
