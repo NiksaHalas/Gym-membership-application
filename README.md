@@ -19,8 +19,8 @@ The Gym Membership Application enables gym administrators to manage members, the
 
 - **Backend:** Java (Spring Boot)
 - **Frontend:** HTML, CSS, JavaScript
-- **Baza podataka:** MySQL
-- **Biblioteke i alati:** Bootstrap, FontAwesome
+- **Database:** MySQL
+- **Other tools:** Bootstrap, FontAwesome
 
 ## Features
 
